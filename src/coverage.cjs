@@ -48,7 +48,7 @@ function formatDelta(current, base) {
   if (base === null || base === undefined) return 'new'
   if (current === null || current === undefined) return '–'
   const d = Math.round((current - base) * 10) / 10
-  if (d === 0) return '±0'
+  if (d === 0) return '±0.0'
   return d > 0 ? `+${d.toFixed(1)}` : d.toFixed(1)
 }
 
