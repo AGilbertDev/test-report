@@ -1,0 +1,6 @@
+{
+  "$comment": "Files left out of coverage on purpose. Each one says why. The Vitest config and the report both read this file, so the numbers agree.",
+  "files": [
+    { "path": "src/report.cjs", "reason": "Wiring only. It calls the tested modules in order and talks to the GitHub API." }
+  ]
+}

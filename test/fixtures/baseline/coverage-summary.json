@@ -1,0 +1,26 @@
+{
+  "total": {
+    "lines": { "total": 470, "covered": 393, "skipped": 0, "pct": 83.6 },
+    "statements": { "total": 490, "covered": 408, "skipped": 0, "pct": 83.3 },
+    "functions": { "total": 86, "covered": 73, "skipped": 0, "pct": 84.9 },
+    "branches": { "total": 130, "covered": 102, "skipped": 0, "pct": 78.5 }
+  },
+  "/work/repo/shared/planning.ts": {
+    "lines": { "total": 49, "covered": 44, "skipped": 0, "pct": 89.9 },
+    "statements": { "total": 51, "covered": 46, "skipped": 0, "pct": 90.2 },
+    "functions": { "total": 8, "covered": 8, "skipped": 0, "pct": 100 },
+    "branches": { "total": 14, "covered": 11, "skipped": 0, "pct": 78.6 }
+  },
+  "/work/repo/app/pages/settings.vue": {
+    "lines": { "total": 73, "covered": 48, "skipped": 0, "pct": 65.8 },
+    "statements": { "total": 75, "covered": 49, "skipped": 0, "pct": 65.3 },
+    "functions": { "total": 12, "covered": 8, "skipped": 0, "pct": 66.7 },
+    "branches": { "total": 20, "covered": 11, "skipped": 0, "pct": 55 }
+  },
+  "/work/repo/server/utils/legacy.ts": {
+    "lines": { "total": 40, "covered": 16, "skipped": 0, "pct": 40 },
+    "statements": { "total": 40, "covered": 16, "skipped": 0, "pct": 40 },
+    "functions": { "total": 5, "covered": 2, "skipped": 0, "pct": 40 },
+    "branches": { "total": 10, "covered": 3, "skipped": 0, "pct": 30 }
+  }
+}

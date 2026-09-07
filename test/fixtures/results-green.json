@@ -1,0 +1,22 @@
+{
+  "numTotalTests": 2,
+  "numPassedTests": 2,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "startTime": 1757280000000,
+  "success": true,
+  "testResults": [
+    {
+      "name": "/work/repo/test/shared/planning.test.ts",
+      "status": "passed",
+      "startTime": 1757280000000,
+      "endTime": 1757280001000,
+      "message": "",
+      "assertionResults": [
+        { "ancestorTitles": ["planning"], "fullName": "planning AC1 sums words per day", "status": "passed", "title": "AC1 sums words per day", "duration": 3, "failureMessages": [] },
+        { "ancestorTitles": ["planning"], "fullName": "planning AC2 rounds a duration to five minutes", "status": "passed", "title": "AC2 rounds a duration to five minutes", "duration": 5, "failureMessages": [] }
+      ]
+    }
+  ]
+}

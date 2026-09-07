@@ -1,0 +1,78 @@
+{
+  "numTotalTestSuites": 2,
+  "numPassedTestSuites": 1,
+  "numFailedTestSuites": 1,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 5,
+  "numPassedTests": 3,
+  "numFailedTests": 1,
+  "numPendingTests": 1,
+  "numTodoTests": 0,
+  "startTime": 1757280000000,
+  "success": false,
+  "testResults": [
+    {
+      "name": "/work/repo/test/server/utils/onboardingReset.test.ts",
+      "status": "failed",
+      "startTime": 1757280000000,
+      "endTime": 1757280005200,
+      "message": "",
+      "assertionResults": [
+        {
+          "ancestorTitles": ["onboardingReset"],
+          "fullName": "onboardingReset AC1 clears the acting admin's settings",
+          "status": "passed",
+          "title": "AC1 clears the acting admin's settings",
+          "duration": 12,
+          "failureMessages": [],
+          "location": { "line": 10, "column": 3 }
+        },
+        {
+          "ancestorTitles": ["onboardingReset"],
+          "fullName": "onboardingReset AC2 clears work_schedule rows for the acting admin only",
+          "status": "failed",
+          "title": "AC2 clears work_schedule rows for the acting admin only",
+          "duration": 31,
+          "failureMessages": [
+            "\u001b[31mAssertionError\u001b[39m: expected 0 rows for user 2, received 3\n    at /work/repo/test/server/utils/onboardingReset.test.ts:41:7\n    at file:///work/repo/node_modules/@vitest/runner/dist/index.js:120:14"
+          ]
+        },
+        {
+          "ancestorTitles": ["onboardingReset"],
+          "fullName": "onboardingReset AC3 keeps the password",
+          "status": "skipped",
+          "title": "AC3 keeps the password",
+          "duration": 0,
+          "failureMessages": []
+        }
+      ]
+    },
+    {
+      "name": "/work/repo/test/shared/planning.test.ts",
+      "status": "passed",
+      "startTime": 1757280005200,
+      "endTime": 1757280008400,
+      "message": "",
+      "assertionResults": [
+        {
+          "ancestorTitles": ["planning"],
+          "fullName": "planning sums words per day",
+          "status": "passed",
+          "title": "sums words per day",
+          "duration": 3,
+          "failureMessages": [],
+          "location": { "line": 8, "column": 3 }
+        },
+        {
+          "ancestorTitles": ["planning"],
+          "fullName": "planning AC4 rounds a duration to five minutes",
+          "status": "passed",
+          "title": "AC4 rounds a duration to five minutes",
+          "duration": 250,
+          "failureMessages": [],
+          "location": { "line": 19, "column": 3 }
+        }
+      ]
+    }
+  ]
+}

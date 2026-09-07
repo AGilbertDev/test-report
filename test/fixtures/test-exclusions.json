@@ -1,0 +1,6 @@
+{
+  "$comment": "Fixture. Files left out of coverage, each with a reason.",
+  "files": [
+    { "path": "server/plugins/session.ts", "reason": "Nitro plugin wiring with no logic of its own." }
+  ]
+}

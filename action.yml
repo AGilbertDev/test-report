@@ -1,0 +1,116 @@
+name: Test Report
+description: Runs Vitest, then reports tests and coverage on the pull request. One sticky comment, a job summary, annotations on failed tests, and a check that is red when it should be.
+author: AGilbertDev
+branding:
+  icon: check-circle
+  color: green
+
+inputs:
+  command:
+    description: Test command. When empty, the action detects bun, pnpm, or npm and runs Vitest with coverage and the JSON reporter. A custom command must write .test-report/results.json and coverage/coverage-summary.json.
+    default: ''
+  working-directory:
+    description: Folder holding package.json, for monorepos.
+    default: '.'
+  threshold:
+    description: Minimum line coverage, in percent, for each changed file.
+    default: '80'
+  fail-on:
+    description: What fails the check. "tests,coverage", "tests", or "none".
+    default: tests,coverage
+  exclusions:
+    description: Path to the exclusions file. Files listed there are left out of coverage, each with a reason.
+    default: .github/test-exclusions.json
+  test-suffixes:
+    description: Comma-separated suffixes that mark a test file, used to map a changed test to its source file.
+    default: .test.ts,.spec.ts,.test.js,.spec.js,.test.mjs,.test.cjs
+  baseline:
+    description: Compare with the default branch's last run and show deltas.
+    default: 'true'
+  comment:
+    description: Post the sticky pull request comment.
+    default: 'true'
+  summary:
+    description: Write the job summary.
+    default: 'true'
+  annotations:
+    description: Annotate failed tests on their file and line.
+    default: 'true'
+  badges:
+    description: Show shields.io badges at the top of the comment.
+    default: 'true'
+  token:
+    description: Token with pull-requests write and actions read.
+    default: ${{ github.token }}
+
+outputs:
+  tests-passed:
+    description: Number of passed tests.
+    value: ${{ steps.report.outputs.tests-passed }}
+  tests-failed:
+    description: Number of failed tests.
+    value: ${{ steps.report.outputs.tests-failed }}
+  coverage:
+    description: Project line coverage, in percent.
+    value: ${{ steps.report.outputs.coverage }}
+  coverage-delta:
+    description: Change in line coverage against the baseline, in points. Empty without a baseline.
+    value: ${{ steps.report.outputs.coverage-delta }}
+  changed-files-coverage:
+    description: Line coverage of the changed files, in percent.
+    value: ${{ steps.report.outputs.changed-files-coverage }}
+  verdict:
+    description: "pass" or "fail".
+    value: ${{ steps.report.outputs.verdict }}
+
+runs:
+  using: composite
+  steps:
+    - id: run
+      name: Run the tests
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      env:
+        INPUT_COMMAND: ${{ inputs.command }}
+      run: bash "${GITHUB_ACTION_PATH}/scripts/run-tests.sh"
+
+    - id: baseline
+      name: Fetch the baseline from the base branch
+      if: inputs.baseline == 'true' && github.event_name == 'pull_request'
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      env:
+        GH_TOKEN: ${{ inputs.token }}
+        BASE_REF: ${{ github.base_ref }}
+      run: bash "${GITHUB_ACTION_PATH}/scripts/fetch-baseline.sh"
+
+    - id: report
+      name: Report
+      uses: actions/github-script@v7
+      env:
+        INPUTS: ${{ toJSON(inputs) }}
+        TEST_EXIT: ${{ steps.run.outputs.exit }}
+        BASELINE_RUN_ID: ${{ steps.baseline.outputs.run_id }}
+      with:
+        github-token: ${{ inputs.token }}
+        script: |
+          const run = require(process.env.GITHUB_ACTION_PATH + '/src/report.cjs')
+          await run({ github, context, core, inputs: JSON.parse(process.env.INPUTS), testExit: Number(process.env.TEST_EXIT || 1) })
+
+    - name: Keep the full coverage report for a week
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage-report
+        path: ${{ inputs.working-directory }}/coverage
+        retention-days: 7
+        if-no-files-found: ignore
+
+    - name: Save this run as the baseline
+      if: inputs.baseline == 'true' && github.event_name == 'push'
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-report-baseline
+        path: ${{ inputs.working-directory }}/coverage/coverage-summary.json
+        retention-days: 30
+        if-no-files-found: ignore
