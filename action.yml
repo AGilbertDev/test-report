@@ -60,7 +60,7 @@ outputs:
     description: Line coverage of the changed files, in percent.
     value: ${{ steps.report.outputs.changed-files-coverage }}
   verdict:
-    description: "pass" or "fail".
+    description: Either pass or fail.
     value: ${{ steps.report.outputs.verdict }}
 
 runs:
