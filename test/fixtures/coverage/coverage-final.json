@@ -1,0 +1,17 @@
+{
+  "/work/repo/app/pages/settings.vue": {
+    "path": "/work/repo/app/pages/settings.vue",
+    "statementMap": {
+      "0": { "start": { "line": 12, "column": 0 }, "end": { "line": 12, "column": 40 } },
+      "1": { "start": { "line": 88, "column": 2 }, "end": { "line": 90, "column": 3 } },
+      "2": { "start": { "line": 91, "column": 2 }, "end": { "line": 91, "column": 20 } },
+      "3": { "start": { "line": 104, "column": 4 }, "end": { "line": 104, "column": 30 } },
+      "4": { "start": { "line": 131, "column": 0 }, "end": { "line": 131, "column": 12 } }
+    },
+    "s": { "0": 4, "1": 0, "2": 2, "3": 0, "4": 0 },
+    "fnMap": {},
+    "f": {},
+    "branchMap": {},
+    "b": {}
+  }
+}
