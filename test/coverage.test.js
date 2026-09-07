@@ -44,7 +44,7 @@ describe('formatting', () => {
   it('formats deltas with a sign', () => {
     expect(cov.formatDelta(92, 89.9)).toBe('+2.1')
     expect(cov.formatDelta(61.5, 65.8)).toBe('-4.3')
-    expect(cov.formatDelta(50, 50)).toBe('±0')
+    expect(cov.formatDelta(50, 50)).toBe('±0.0')
     expect(cov.formatDelta(50, null)).toBe('new')
   })
 })

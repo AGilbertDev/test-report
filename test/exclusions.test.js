@@ -20,6 +20,13 @@ describe('readExclusions', () => {
   it('reports a missing file as absent, not as an error', () => {
     expect(ex.readExclusions(path.join(fixtures, 'nope.json')).present).toBe(false)
   })
+  it('flags a file that is not valid JSON instead of throwing', () => {
+    const r = ex.readExclusions(path.join(fixtures, 'spec.md'))
+    expect(r).toMatchObject({ present: true, invalid: true, files: [] })
+  })
+  it('treats no path as absent', () => {
+    expect(ex.readExclusions(undefined).present).toBe(false)
+  })
   it('reads the fixture', () => {
     const r = ex.readExclusions(path.join(fixtures, 'test-exclusions.json'))
     expect(r.files[0].path).toBe('server/plugins/session.ts')
