@@ -86,7 +86,7 @@ runs:
 
     - id: report
       name: Report
-      uses: actions/github-script@v8
+      uses: actions/github-script@v9
       env:
         INPUTS: ${{ toJSON(inputs) }}
         TEST_EXIT: ${{ steps.run.outputs.exit }}
@@ -99,7 +99,7 @@ runs:
 
     - name: Keep the full coverage report for a week
       if: always()
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v7
       with:
         name: coverage-report
         path: ${{ inputs.working-directory }}/coverage
@@ -108,7 +108,7 @@ runs:
 
     - name: Save this run as the baseline
       if: inputs.baseline == 'true' && github.event_name == 'push'
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v7
       with:
         name: test-report-baseline
         path: ${{ inputs.working-directory }}/coverage/coverage-summary.json

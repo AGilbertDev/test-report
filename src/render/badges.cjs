@@ -26,7 +26,7 @@ function badgesLine(report) {
   else out.push(shield('coverage', 'no data', 'lightgrey'))
 
   if (delta !== null && meta.baseRef) {
-    const color = delta === 'new' || delta === '±0' ? 'lightgrey' : delta.startsWith('+') ? 'brightgreen' : 'red'
+    const color = delta === 'new' || delta === '±0.0' ? 'lightgrey' : delta.startsWith('+') ? 'brightgreen' : 'red'
     out.push(shield(`vs ${meta.baseRef}`, delta, color))
   }
   return out.join(' ')
