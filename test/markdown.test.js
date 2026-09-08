@@ -27,6 +27,10 @@ describe('render', () => {
     expect(out).toContain('AC2 clears work_schedule rows for the acting admin only (line 41)')
     expect(out).toContain('> AssertionError: expected 0 rows for user 2, received 3')
   })
+  it('orders both coverage summaries the same way, percentage before file count', () => {
+    expect(out).toContain('<b>Coverage of your changes</b> · 77.3% lines · 3 files · 1 under 80%')
+    expect(out).toContain('<b>Whole project</b> · 84.2% lines · 5 files · 2 under 80%')
+  })
   it('shows changed files with deltas and uncovered lines', () => {
     expect(out).toContain('| ❌ | `app/pages/settings.vue` | 61.5% | 50.0% | -4.3 | 88-90, 104, 131 |')
     expect(out).toContain('| ✅ | `shared/planning.ts` | 92.0% | 85.7% | +2.1 |')
