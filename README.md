@@ -2,7 +2,7 @@
 
 A GitHub Action that runs Vitest and reports on the pull request. One comment, updated in place. A job summary. Failed tests annotated on their lines. A check that is red when a test fails or a changed file is under the coverage threshold.
 
-> Published for viewing and reference only. It is not open source. See [License](#license).
+> Mine, published so the work can be read and tried. It is not open source. The licence permits running it to evaluate my work, and nothing beyond that. See [License](#license).
 
 ## Contents
 
@@ -158,4 +158,4 @@ This repository is the action's first consumer. Every pull request here gets the
 
 ## License
 
-All rights reserved. This code is published for viewing and reference only, and is not open source. See [LICENSE](./LICENSE).
+All rights reserved, with one narrow permission. Anyone may install and run it as published to evaluate my work. That covers running it and nothing else, so not adopting it in your own projects, not adapting it, and not redistributing it. See [LICENSE](./LICENSE).
