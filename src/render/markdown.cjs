@@ -84,7 +84,9 @@ function coverageSection(report, level) {
   if (changed.rows.length === 0) {
     return details(`<b>Coverage of your changes</b> · no instrumented files changed`, ['_Nothing this pull request touched is measured by coverage._'], false)
   }
-  const head = [`<b>Coverage of your changes</b>`, `${n(changed.rows.length)} ${plural(changed.rows.length, 'file', 'files')}`, `${formatPct(changed.linesPct)} lines`]
+  // Same order as the whole-project line. The number a reviewer scans for comes
+  // first, then how much of the pull request it covers.
+  const head = [`<b>Coverage of your changes</b>`, `${formatPct(changed.linesPct)} lines`, `${n(changed.rows.length)} ${plural(changed.rows.length, 'file', 'files')}`]
   if (changed.low > 0) head.push(`${changed.low} under ${options.threshold}%`)
 
   const withDelta = Boolean(baseline)
