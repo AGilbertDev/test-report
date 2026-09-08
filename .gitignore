@@ -3,3 +3,7 @@
 /.test-report
 *.log
 .DS_Store
+
+# Claude, local only
+.claude/settings.local.json
+.claude/worktrees/

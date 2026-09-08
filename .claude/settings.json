@@ -1,0 +1,14 @@
+{
+  "$comment": "Committed on purpose. A clone gets the same conventions, so the plugins are enabled at project scope rather than per machine.",
+  "extraKnownMarketplaces": {
+    "agilbertdev": {
+      "source": {
+        "source": "github",
+        "repo": "AGilbertDev/claude-plugins"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "workflow@agilbertdev": true
+  }
+}
