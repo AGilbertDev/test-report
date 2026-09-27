@@ -22,7 +22,8 @@ function badgesLine(report) {
   else if (tests.failed > 0) out.push(shield('tests', `${tests.failed} failing`, 'red'))
   else out.push(shield('tests', `${tests.passed} passed`, 'brightgreen'))
 
-  if (coverage.available) out.push(shield('coverage', `${coverage.total.lines.pct.toFixed(1)}%`, coverageColor(coverage.total.lines.pct, options.threshold)))
+  const pct = coverage.available ? coverage.total.lines.pct : null // null when no file was measured
+  if (pct !== null) out.push(shield('coverage', `${pct.toFixed(1)}%`, coverageColor(pct, options.threshold)))
   else out.push(shield('coverage', 'no data', 'lightgrey'))
 
   if (delta !== null && meta.baseRef) {
