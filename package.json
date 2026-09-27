@@ -1,6 +1,6 @@
 {
   "name": "test-report",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "description": "A GitHub Action that runs Vitest and reports tests and coverage on the pull request, with a sticky comment, a job summary, annotations, and a truthful check.",
   "type": "module",
